@@ -5,10 +5,7 @@ import com.telran.simplespringbootproject.model.Country;
 import com.telran.simplespringbootproject.service.CityService;
 import com.telran.simplespringbootproject.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,5 +54,19 @@ public class MyController {
     public List<City> getAllCities(@RequestParam String countryCode){
         return cityService.getAllCitiesByCountry(countryCode);
     }
+
+    @PostMapping("/addcountry") // http://localhost:8080/app/addcountry
+    public void addCountry(@RequestBody Country country){
+        System.out.println("Saving new country: " + country);
+        service.saveCounty(country);
+    }
+
+    @GetMapping("/update") // http://localhost:8080/app/update
+    public void updateAfghanistan(){
+        System.out.println("Updating Afghanistan with hardcoded values");
+        service.updateAfghanistan();
+    }
+
+
 
 }

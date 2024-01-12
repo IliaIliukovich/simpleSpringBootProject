@@ -30,4 +30,13 @@ public class CountryService {
         return repository.custom();
     }
 
+    public void saveCounty(Country country) {
+        repository.save(country);
+    }
+
+    public void updateAfghanistan(){
+        Country country = repository.findById("AFG").get();
+        country.setName("Afghanistan New Name");
+        repository.save(country);
+    }
 }
