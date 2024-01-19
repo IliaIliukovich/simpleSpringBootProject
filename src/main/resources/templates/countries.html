@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counties</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Countries</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c, iter : ${countriesForModel}"
+        th:style="${iter.odd}? 'font-weight: bold;'">
+        <td th:text="${iter.index}+1"></td>
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.code}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

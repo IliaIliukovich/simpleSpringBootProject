@@ -35,6 +35,26 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--        XML REST data format-->
+<!--			<dependency>-->
+<!--				<groupId>com.fasterxml.jackson.dataformat</groupId>-->
+<!--				<artifactId>jackson-dataformat-xml</artifactId>-->
+<!--			</dependency>-->
+
+<!--		Thymeleaf template-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!--		Tools for web development-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
 		<!-- Spring Test	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
