@@ -1,5 +1,6 @@
 package com.telran.simplespringbootproject.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -16,7 +17,7 @@ public class Country {
 
     private String name;
 
-//    @OneToMany(mappedBy = "country")
+//    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
 //    private List<City> cityList;
 
     // unidirectional --- bidirectional

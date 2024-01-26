@@ -72,6 +72,21 @@ public class RestController {
         service.updateAfghanistan();
     }
 
+    @GetMapping("/addSpecialCityAndCountry") // http://localhost:8080/rest/addSpecialCityAndCountry?name=ww1
+    public City addSpecialCityAndCountry(@RequestParam String name) {
+        return cityService.addSpecialCityAndCountry(name);
+    }
+
+    @GetMapping("/addSpecialCityToCountry") // http://localhost:8080/rest/addSpecialCityToCountry?name=NewInternetCity
+    public City addSpecialCityToCountry(@RequestParam String name) {
+        return cityService.addSpecialCityToCountry(name);
+    }
+
+    @GetMapping("/getSpecialCity") // http://localhost:8080/rest/getSpecialCity
+    public void getSpecialCity() {
+        cityService.getSpecialCity();
+    }
+
 
 
 }

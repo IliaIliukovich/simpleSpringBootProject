@@ -26,6 +26,16 @@ public class CountryService {
         return repository.findById(code);
     }
 
+    // Пример: два вызова findById() приведут только к одному запросу в БД
+//    public Optional<Country> getCountryByCode(String code){
+//        return repository.findById(code);
+//        Optional<Country> country = repository.findById(code);
+//        System.out.println(country);
+//        country = repository.findById(code);
+//        System.out.println(country);
+//        return country;
+//    }
+
     public List<Country> findCountriesByCodeStartingWith(String code) {
         return repository.findCountriesByCodeStartingWith(code);
     }
