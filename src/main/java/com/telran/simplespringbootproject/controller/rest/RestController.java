@@ -4,6 +4,9 @@ import com.telran.simplespringbootproject.model.City;
 import com.telran.simplespringbootproject.model.Country;
 import com.telran.simplespringbootproject.service.CityService;
 import com.telran.simplespringbootproject.service.CountryService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +15,10 @@ import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/rest")
+//@Slf4j
 public class RestController {
+
+    private static final Logger logger = LogManager.getLogger(RestController.class);
 
     private final CountryService service;
 
@@ -32,12 +38,24 @@ public class RestController {
 //    @GetMapping("/countries") // http://localhost:8080/rest/countries
     @RequestMapping(value = "/countries", method = RequestMethod.GET)
     public List<Country> getAllCountries(){
-        return service.getAllCountries();
+        List<Country> countries = service.getAllCountries();
+
+        // old version
+//        if (logger.isDebugEnabled()) {
+//            logger.debug("Special Countries : {}", countries.stream().filter(country -> country.getName().startsWith("A")).toList());
+//        }
+
+        logger.debug("Special Countries : {}", () -> countries.stream().filter(country -> country.getName().startsWith("A")).toList());
+        return countries;
     }
 
     @GetMapping("/country") // http://localhost:8080/rest/country?code=DEU
     public Optional<Country> getCountry(@RequestParam String code){
-        return service.getCountryByCode(code);
+//        logger.debug("Got request getCountry by " + code); // bad practice
+        logger.debug("Got request getCountry by {}", code);
+        Optional<Country> countryByCode = service.getCountryByCode(code);
+        logger.debug("Retrieved data: {}. Code: {}", countryByCode, code);
+        return countryByCode;
     }
 
     @GetMapping("/search") // http://localhost:8080/rest/search?code=D
