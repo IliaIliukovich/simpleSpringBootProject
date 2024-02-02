@@ -41,6 +41,7 @@ public class CountryService {
     }
 
     public Optional<Country> findGeorgia(){
+//        System.out.println(1 / 0);
         return repository.custom();
     }
 
